@@ -1,0 +1,32 @@
+<!doctype html>
+<html class="no-js" lang="pt-br">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<body>
+	<table>
+	    <tr>
+	        <th>User_Name</th>
+	        <th>score</th>
+	        <th>team</th>
+	    </tr>
+	</table>
+
+	<script>
+		$(document).ready(function () {	  
+			var json;    
+			$.get("./tabela.json", function(response) {				
+		    	json = response;
+	        	var tr;
+		        for (var i = 0; i < json.length; i++) {
+		            tr = $('<tr/>');
+		            tr.append("<td>" + json[i].User_Name + "</td>");
+		            tr.append("<td>" + json[i].score + "</td>");
+		            tr.append("<td>" + json[i].team + "</td>");
+		            $('table').append(tr);
+		        }
+			});
+	    });
+	</script>
+</body>
+</html>
